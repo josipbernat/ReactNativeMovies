@@ -4,7 +4,7 @@ export const IMAGE_POSTER_PATH = (image) => {
 }
 
 export const IMAGE_BACKDROP_PATH = (image) => {
-  return 'https://image.tmdb.org/t/p/w300/' + image;
+  return 'https://image.tmdb.org/t/p/w780/' + image;
 }
 
 export const API_PATH = (path) => {
