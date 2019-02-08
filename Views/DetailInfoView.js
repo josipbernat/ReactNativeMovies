@@ -131,7 +131,6 @@ export class DetailInfoView extends Component {
         </Text>
         <View style={GlobalStyle.styles.cardSeparator} />
         <View style={GlobalStyle.styles.cardSeparatorLine} />
-
       </View>
     );
   }
