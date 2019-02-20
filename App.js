@@ -7,11 +7,11 @@
  * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, {Component} from 'react';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
-import { HomeScreen } from './Screens/HomeScreen'
-import { FavoritesScreen } from './Screens/FavoritesScreen'
-import { MovieDetailsScreen } from './Screens/MovieDetailsScreen'
+import { HomeScreen } from "./src/Screens/HomeScreen";
+import { FavoritesScreen } from "./src/Screens/FavoritesScreen";
+
+import { MovieDetailsScreen } from './src/Screens/MovieDetailsScreen'
 
 const HomeStack = createStackNavigator(
   {

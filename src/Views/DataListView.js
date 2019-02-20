@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
-import MovieRow from '../Components/MovieRow'
+import MovieRow from "../FlatListRows/MovieRow";
 
 export class DataListView extends Component {
 

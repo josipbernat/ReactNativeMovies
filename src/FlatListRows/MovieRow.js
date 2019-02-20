@@ -20,13 +20,15 @@ const styles = StyleSheet.create({
     },
 });
 
-const MovieRow = (props) => (
-    <View style={styles.container}>
-        <Image source={{ uri: Constants.IMAGE_POSTER_PATH(props.item.poster_path) }} style={styles.photo} />
-        <Text style={styles.text}>
-            {props.item.title}
-        </Text>
-    </View>
-);
+const movieRow = (props) => {
+    return (
+        <View style={styles.container}>
+            <Image source={{ uri: Constants.IMAGE_POSTER_PATH(props.item.poster_path) }} style={styles.photo} />
+            <Text style={styles.text}>
+                {props.item.title}
+            </Text>
+        </View>
+    );
+}
 
-export default MovieRow;
+export default movieRow;

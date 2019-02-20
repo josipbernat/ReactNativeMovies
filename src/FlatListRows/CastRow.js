@@ -9,31 +9,29 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: 'white',
-    width: width * 0.45,
-    backgroundColor: 'white',
-    paddingLeft: 8,
-    paddingRight: 8,
+    width: width * 0.33,
+    height: 100,
   },
   text: {
     marginTop: 4,
-    marginBottom: 16,
     fontSize: 14,
     backgroundColor: 'white',
   },
   photo: {
-    aspectRatio: 16 / 9,
-    width: '100%',
+    height: 70,
+    width: 70,
+    borderRadius: 35,
     backgroundColor: 'gray',
   },
 });
 
-const TrailerRow = (props) => (
+const castRow = (props) => (
   <View style={styles.container}>
-    <Image source={{ uri: Constants.IMAGE_TRAILER_PATH(props.item.key) }} style={styles.photo} />
-    <Text style={styles.text} numberOfLines={2}>
+    <Image source={{ uri: Constants.IMAGE_PROFILE_PATH(props.item.profile_path) }} style={styles.photo} />
+    <Text style={styles.text}>
       {props.item.name}
     </Text>
   </View>
 );
 
-export default TrailerRow;
+export default castRow;
