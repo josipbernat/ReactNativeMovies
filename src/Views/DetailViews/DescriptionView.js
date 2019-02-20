@@ -15,7 +15,6 @@ const descriptionView = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "column",
     alignItems: "flex-start",
     backgroundColor: defaultBackground,
     width: "100%"

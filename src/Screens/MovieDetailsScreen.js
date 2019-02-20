@@ -150,13 +150,11 @@ export class MovieDetailsScreen extends React.Component {
 
           {this.state.isLoadingData && <LoadingView />}
           {!this.state.isLoadingData && (
-            <DetailView item={this.state.itemDetails} />
+            <DetailView
+              item={this.state.itemDetails}
+              cast={this.state.cast.cast}
+            />
           )}
-          <CastListView
-            items={this.state.cast.cast}
-            isLoading={this.state.isLoadingCast}
-            itemSelected={this.handleCastSelect}
-          />
           <TrailersListView
             items={this.state.trailers.results}
             isLoading={this.state.isLoadingTrailers}
