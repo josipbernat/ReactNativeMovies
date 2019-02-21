@@ -7,8 +7,8 @@ import {
   ScrollView
 } from "react-native";
 import * as Constants from "../Constants/Constants";
-import { LoadingView } from "../Views/LoadingView";
-import { DetailView } from "../Views/DetailView";
+import LoadingView from "../Views/LoadingView";
+import DetailView from "../Views/DetailView";
 
 export class MovieDetailsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -25,103 +25,49 @@ export class MovieDetailsScreen extends React.Component {
     this.state = {
       isLoadingData: true,
       details: [],
-      isLoadingCast: true,
       cast: [],
-      isLoadingTrailers: true,
       trailers: []
     };
   }
 
-  getMovieDetails = () => {
-    this.setState(previous => ({
+  loadDetails = async () => {
+    this.setState({
       isLoadingData: true
-    }));
+    });
 
     const item = this.props.navigation.getParam("item", "NO-ITEM");
-    let path = Constants.API_PATH("movie/" + item.id);
-    return fetch(path)
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState(previous => ({
+    let urls = [
+      Constants.API_PATH("movie/" + item.id),
+      Constants.API_PATH("movie/" + item.id + "/credits"),
+      Constants.API_PATH("movie/" + item.id + "/videos")
+    ];
+
+    let promises = urls.map(url => {
+      return fetch(url)
+        .then(response => response.json())
+        .then(responseJson => Promise.resolve(responseJson))
+        .catch(e => Promise.reject(new Error(e)));
+    });
+
+    Promise.all(promises)
+      .then(values => {
+        this.setState({
           isLoadingData: false,
-          itemDetails: responseJson
-        }));
-        return true;
+          itemDetails: values[0],
+          cast: values[1],
+          trailers: values[2]
+        });
       })
-      .catch(error => {
-        console.error(error);
-        this.setState(previous => ({
+      .catch(e => {
+        this.setState({
           isLoadingData: false,
-          itemDetails: {}
-        }));
-        return false;
-      });
-  };
-
-  getCastDetails = () => {
-    this.setState(previous => ({
-      isLoadingCast: true
-    }));
-
-    const item = this.props.navigation.getParam("item", "NO-ITEM");
-    let creditsPath = Constants.API_PATH("movie/" + item.id + "/credits");
-    return fetch(creditsPath)
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState(previous => ({
-          isLoadingCast: false,
-          cast: responseJson
-        }));
-        return true;
-      })
-      .catch(error => {
-        console.error(error);
-        this.setState(previous => ({
-          isLoadingCast: false,
-          cast: {}
-        }));
-        return false;
-      });
-  };
-
-  getTrailers = () => {
-    this.setState(previous => ({
-      isLoadingTrailers: true
-    }));
-
-    const item = this.props.navigation.getParam("item", "NO-ITEM");
-    let trailersPath = Constants.API_PATH("movie/" + item.id + "/videos");
-    return fetch(trailersPath)
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState(previous => ({
-          isLoadingTrailers: false,
-          trailers: responseJson
-        }));
-        return true;
-      })
-      .catch(error => {
-        console.error(error);
-        this.setState(previous => ({
-          isLoadingTrailers: false,
-          trailers: {}
-        }));
-        return false;
+          loadingError: e
+        });
       });
   };
 
   componentDidMount() {
-    return this.getMovieDetails()
-      .then(details => {
-        return this.getCastDetails()
-          .then(cast => {
-            return this.getTrailers()
-              .then(trailers => {})
-              .catch(e => {});
-          })
-          .catch(e => {});
-      })
-      .catch(e => {});
+    this.loadDetails();
   }
 
   // I moved this to separate function because console.log crashes render function
