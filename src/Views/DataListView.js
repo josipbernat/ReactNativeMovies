@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
-import { StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
 import MovieRow from "../FlatListRows/MovieRow";
 
 export class DataListView extends Component {
-
   renderSeparator = () => {
     return (
       <View
@@ -17,17 +16,17 @@ export class DataListView extends Component {
     );
   };
 
-	render() {
+  render() {
     return (
-      <FlatList style={styles.container}
-        data={this.props.data} 
+      <FlatList
+        style={styles.container}
+        data={this.props.data}
         keyExtractor={(item, index) => item.id.toString()}
-        renderItem={({item}) => 
-          
-          <TouchableOpacity onPress={() => this.props.itemSelected(item)} >
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => this.props.itemSelected(item)}>
             <MovieRow item={item} />
           </TouchableOpacity>
-        }
+        )}
         ItemSeparatorComponent={this.renderSeparator}
       />
     );
@@ -36,23 +35,23 @@ export class DataListView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F5FCFF'
+    backgroundColor: "#F5FCFF"
   },
   item: {
     height: 44,
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'stretch',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "stretch"
   },
   itemText: {
     fontSize: 18,
     paddingLeft: 16,
-    paddingRight: 16,
+    paddingRight: 16
   },
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#8E8E8E',
-  },
+    backgroundColor: "#8E8E8E"
+  }
 });

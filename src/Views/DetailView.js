@@ -4,6 +4,7 @@ import TitleView from "./DetailViews/TitleView";
 import DescriptionView from "./DetailViews/DescriptionView";
 import FactsView from "./DetailViews/FactsView";
 import CastView from "./DetailViews/CastView";
+import TrailersView from "./DetailViews/TrailersView";
 
 const styles = StyleSheet.create({
   container: {
@@ -25,6 +26,7 @@ export class DetailView extends Component {
         <FactsView item={this.props.item} />
         <DescriptionView item={this.props.item} />
         <CastView items={this.props.cast} />
+        <TrailersView items={this.props.trailers} />
       </View>
     );
   }

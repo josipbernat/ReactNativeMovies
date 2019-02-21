@@ -1,34 +1,43 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
-import * as Constants from '../Constants/Constants.js'
-const { width } = Dimensions.get('window');
+import React from "react";
+import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import * as Constants from "../Constants/Constants.js";
+import {
+  defaultPadding,
+  defaultBackground
+} from "../Views/DetailViews/DetailStyling";
+const { width } = Dimensions.get("window");
+
+const itemWidth = (width - defaultPadding * 4) / 3.5;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    width: width * 0.33,
-    height: 100,
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: defaultBackground
   },
   text: {
     marginTop: 4,
     fontSize: 14,
-    backgroundColor: 'white',
+    marginBottom: defaultPadding,
+    backgroundColor: defaultBackground,
+    width: itemWidth,
+    textAlign: "center"
   },
   photo: {
-    height: 70,
-    width: 70,
-    borderRadius: 35,
-    backgroundColor: 'gray',
-  },
+    height: itemWidth,
+    width: itemWidth,
+    borderRadius: itemWidth / 2,
+    backgroundColor: "gray"
+  }
 });
 
-const castRow = (props) => (
+const castRow = props => (
   <View style={styles.container}>
-    <Image source={{ uri: Constants.IMAGE_PROFILE_PATH(props.item.profile_path) }} style={styles.photo} />
-    <Text style={styles.text}>
+    <Image
+      source={{ uri: Constants.IMAGE_PROFILE_PATH(props.item.profile_path) }}
+      style={styles.photo}
+    />
+    <Text style={styles.text} numberOfLines={2}>
       {props.item.name}
     </Text>
   </View>

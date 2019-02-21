@@ -6,11 +6,26 @@ import {
   FlatList,
   TouchableOpacity
 } from "react-native";
-import { defaultBackground, styles as detailStyles } from "./DetailStyling";
+import {
+  defaultBackground,
+  defaultPadding,
+  styles as detailStyles
+} from "./DetailStyling";
 import CastRow from "../../FlatListRows/CastRow";
 import CardSeparator from "./CardSeparator";
 
 const castView = props => {
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          width: defaultPadding,
+          backgroundColor: defaultBackground
+        }}
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Text style={detailStyles.title}>Cast</Text>
@@ -21,10 +36,27 @@ const castView = props => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item, index) => item.cast_id.toString()}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => this.props.itemSelected(item)}>
+          <TouchableOpacity onPress={() => props.itemSelected(item)}>
             <CastRow item={item} />
           </TouchableOpacity>
         )}
+        ListFooterComponent={
+          <View
+            style={{
+              width: defaultPadding,
+              backgroundColor: defaultBackground
+            }}
+          />
+        }
+        ListHeaderComponent={
+          <View
+            style={{
+              width: defaultPadding,
+              backgroundColor: defaultBackground
+            }}
+          />
+        }
+        ItemSeparatorComponent={this.renderSeparator}
       />
       <CardSeparator />
     </View>

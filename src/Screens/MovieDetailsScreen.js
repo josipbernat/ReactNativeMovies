@@ -9,9 +9,6 @@ import {
 import * as Constants from "../Constants/Constants";
 import { LoadingView } from "../Views/LoadingView";
 import { DetailView } from "../Views/DetailView";
-import { CastListView } from "../Views/CastListView";
-import { TrailersListView } from "../Views/TrailersListView";
-import { FactsView } from "../Views/FactsView";
 
 export class MovieDetailsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -153,14 +150,11 @@ export class MovieDetailsScreen extends React.Component {
             <DetailView
               item={this.state.itemDetails}
               cast={this.state.cast.cast}
+              castSelectedHandler={this.handleCastSelect}
+              trailers={this.state.trailers.results}
+              trailerSelectedHandler={this.handleTrailerSelect}
             />
           )}
-          <TrailersListView
-            items={this.state.trailers.results}
-            isLoading={this.state.isLoadingTrailers}
-            itemSelected={this.handleTrailerSelect}
-          />
-          <FactsView />
         </View>
       </ScrollView>
     );
