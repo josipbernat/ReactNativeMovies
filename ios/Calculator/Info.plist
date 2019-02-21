@@ -43,6 +43,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Entypo.ttf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

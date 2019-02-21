@@ -1,45 +1,114 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableHighlight,
-  Image
-} from "react-native";
-import { AnimatedCircularProgress } from "react-native-circular-progress";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import CardSeparator from "./CardSeparator";
-import { defaultBackground, defaultPadding } from "./DetailStyling";
-import Icon from "react-native-vector-icons/AntDesign";
+import {
+  defaultBackground,
+  defaultPadding,
+  textColorBody,
+  styles as detailStyles
+} from "./DetailStyling";
+import Moment from "moment";
+
+const FactItem = props => {
+  subtitleSelectedHandler = () => {
+    props.urlSelectedHandler(props.value);
+  };
+
+  let subtitle = {};
+  if (props.urlSelectedHandler !== null) {
+    subtitle = (
+      <TouchableOpacity onPress={this.subtitleSelectedHandler}>
+        <Text style={styles.subtitle}>{props.value}</Text>
+      </TouchableOpacity>
+    );
+  } else {
+    subtitle = <Text style={styles.subtitle}>{props.value}</Text>;
+  }
+
+  return (
+    <View style={styles.item}>
+      <Text style={styles.title}>{props.title}</Text>
+      {subtitle}
+    </View>
+  );
+};
 
 const factsView = props => {
+  let facts = [];
+  if (props.item.budget !== null) {
+    facts.push(
+      <FactItem
+        title="Budget"
+        value={"$" + props.item.budget.toLocaleString()}
+        key="Budget"
+      />
+    );
+  }
+  if (props.item.revenue !== null) {
+    facts.push(
+      <FactItem
+        title="Revenue"
+        value={"$" + props.item.revenue.toLocaleString()}
+        key="Revenue"
+      />
+    );
+  }
+  if (props.item.homepage !== null) {
+    facts.push(
+      <FactItem
+        title="Homepage"
+        value={props.item.homepage}
+        key="Homepage"
+        urlSelectedHandler={props.urlSelectedHandler}
+      />
+    );
+  }
+  if (props.item.spoken_languages !== null) {
+    let languages = props.item.spoken_languages.map(x => x.iso_639_1);
+    facts.push(
+      <FactItem
+        title="Languages"
+        value={languages.join(", ")}
+        key="Languages"
+      />
+    );
+  }
+  if (props.item.production_countries !== null) {
+    let countries = props.item.production_countries.map(x => x.iso_3166_1);
+    facts.push(
+      <FactItem title="Country" value={countries.join(", ")} key="Country" />
+    );
+  }
+  if (props.item.runtime !== null) {
+    facts.push(
+      <FactItem
+        title="Duration"
+        value={props.item.runtime + " min"}
+        key="Duration"
+      />
+    );
+  }
+  if (props.item.release_date !== null) {
+    facts.push(
+      <FactItem
+        title="Premiere date"
+        value={Moment(props.item.release_date).format("MMM Do YYYY")}
+        key="Premiere date"
+      />
+    );
+  }
+
   return (
     <View style={styles.container}>
-      <View style={styles.itemsContainer}>
-        <View style={styles.item}>
-          <AnimatedCircularProgress
-            size={60}
-            width={7}
-            rotation={0}
-            fill={props.item.vote_average * 10}
-            tintColor="#30CE7D"
-            onAnimationComplete={() => console.log("onAnimationComplete")}
-            backgroundColor="#3d5875"
-          >
-            {fill => (
-              <Text style={styles.points}>{props.item.vote_average * 10}%</Text>
-            )}
-          </AnimatedCircularProgress>
-          <Text style={[styles.itemText, { marginTop: 8 }]}>User Score</Text>
-        </View>
-        <View style={styles.item}>
-          <TouchableHighlight onPress={props.onFavoritePress}>
-            <Icon name="hearto" color="" size={65} color="#21D066" />
-          </TouchableHighlight>
-          <Text style={[styles.itemText, { marginTop: -3 }]}>
-            Add to favorites
-          </Text>
-        </View>
-      </View>
+      <Text style={detailStyles.title}>Facts</Text>
+      {facts}
+      <View
+        style={{
+          height: defaultPadding,
+          width: "100%",
+          backgroundColor: defaultBackground
+        }}
+      />
       <CardSeparator />
     </View>
   );
@@ -47,26 +116,32 @@ const factsView = props => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    alignItems: "flex-start",
     backgroundColor: defaultBackground,
-    alignItems: "center"
-  },
-  itemsContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    width: "70%",
-    backgroundColor: defaultBackground,
-    justifyContent: "space-between"
+    width: "100%"
   },
   item: {
+    flexDirection: "row",
+    width: "100%",
     alignItems: "center",
+    justifyContent: "space-between",
     backgroundColor: defaultBackground,
-    margin: defaultPadding
+    marginTop: defaultPadding / 2
   },
-  itemText: {
-    fontSize: 14,
-    color: "#515151",
-    textAlign: "center"
+  title: {
+    fontWeight: "bold",
+    fontSize: 15,
+    color: textColorBody,
+    marginLeft: defaultPadding,
+    marginRight: defaultPadding / 2
+  },
+  subtitle: {
+    fontSize: 15,
+    color: textColorBody,
+    textAlign: "right",
+    marginRight: defaultPadding,
+    marginLeft: defaultPadding / 2,
+    backgroundColor: defaultBackground
   }
 });
 

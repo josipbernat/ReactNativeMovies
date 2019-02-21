@@ -41,6 +41,10 @@
 		7F60D22C8A624023ACEDD3A2 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB01DC7F7614B968C68A99C /* libRNSVG.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		BE8B4DCF221EDC8D0064297A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE8B4DA4221EDC8D0064297A /* MaterialIcons.ttf */; };
+		BE8B4DD0221EDC8D0064297A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE8B4DA4221EDC8D0064297A /* MaterialIcons.ttf */; };
+		BE8B4E0B221EDD7C0064297A /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE8B4DE0221EDD7C0064297A /* Entypo.ttf */; };
+		BE8B4E0C221EDD7C0064297A /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE8B4DE0221EDD7C0064297A /* Entypo.ttf */; };
 		BEF5DE8A221D89150004B2EE /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF5DE87221D88FC0004B2EE /* libRNVectorIcons.a */; };
 		BEF5DE8B221D891D0004B2EE /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF5DE89221D88FC0004B2EE /* libRNVectorIcons-tvOS.a */; };
 		BEF5DE8D221D899F0004B2EE /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF5DE8C221D899F0004B2EE /* AntDesign.ttf */; };
@@ -391,6 +395,8 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		BE8B4DA4221EDC8D0064297A /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		BE8B4DE0221EDD7C0064297A /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		BEF5DE81221D88FC0004B2EE /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		BEF5DE8C221D899F0004B2EE /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -638,6 +644,8 @@
 			isa = PBXGroup;
 			children = (
 				BEF5DE8C221D899F0004B2EE /* AntDesign.ttf */,
+				BE8B4DA4221EDC8D0064297A /* MaterialIcons.ttf */,
+				BE8B4DE0221EDD7C0064297A /* Entypo.ttf */,
 				13B07FAE1A68108700A75B9A /* Calculator */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* CalculatorTests */,
@@ -1197,8 +1205,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE8B4DCF221EDC8D0064297A /* MaterialIcons.ttf in Resources */,
 				BEF5DE8D221D899F0004B2EE /* AntDesign.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				BE8B4E0B221EDD7C0064297A /* Entypo.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1208,7 +1218,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEF5DE8E221D899F0004B2EE /* AntDesign.ttf in Resources */,
+				BE8B4E0C221EDD7C0064297A /* Entypo.ttf in Resources */,
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				BE8B4DD0221EDC8D0064297A /* MaterialIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

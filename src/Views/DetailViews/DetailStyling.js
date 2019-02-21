@@ -1,25 +1,28 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
-  title: {
-    marginTop: 16,
-    marginLeft: 16,
-    marginRight: 16,
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#232323",
-    textAlign: "left"
-  },
-  subtitle: {
-    marginLeft: 16,
-    marginRight: 16,
-    marginTop: 2,
-    fontSize: 14,
-    color: "#515151",
-    textAlign: "left",
-    marginBottom: 16
-  }
-});
+export const textColorTitle = "#232323";
+export const textColorBody = "#515151";
 
 export const defaultPadding = 16;
 export const defaultBackground = "white";
+
+export const styles = StyleSheet.create({
+  title: {
+    marginTop: defaultPadding,
+    marginLeft: defaultPadding,
+    marginRight: defaultPadding,
+    fontSize: 20,
+    fontWeight: "bold",
+    color: textColorTitle,
+    textAlign: "left"
+  },
+  subtitle: {
+    marginLeft: defaultPadding,
+    marginRight: defaultPadding,
+    marginTop: 2,
+    marginBottom: defaultPadding,
+    fontSize: 14,
+    color: textColorBody,
+    textAlign: "left"
+  }
+});
