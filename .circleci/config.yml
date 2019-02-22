@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  node:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: npm install
+android:
+  docker:
+    - image: circleci/android:api-27-node8-alpha
+  steps:
+    - checkout
+    - run: npm install
+    - run: cd android && ./gradlew assembleRelease
+ios:
+  macos:
+    xcode: "10.0.1"
+  # use a --login shell so our "set Ruby version" command gets picked up for later steps
+  shell: /bin/bash --login -o pipefail
+steps:
+  - checkout
+  - run: npm install
+  - run: xcodebuild -project ios/Calculator.xcodeproj -scheme "Calculator" -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=12.1,name=iPhone X'
+workflows:
+  version: 2
+  node-android-ios:
+    jobs:
+      - node
+      - android:
+          requires:
+            - node
+      - ios:
+          requires:
+            - node
