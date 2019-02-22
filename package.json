@@ -7,12 +7,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "flatmap": "0.0.3",
     "moment": "^2.24.0",
     "react": "16.6.3",
-    "react-native": "0.58.3",
+    "react-native": "^0.58.5",
     "react-native-circular-progress": "^1.1.0",
     "react-native-gesture-handler": "^1.0.15",
-    "react-native-svg": "^9.2.3",
+    "react-native-svg": "^9.2.4",
+    "react-native-vector-icons": "^6.3.0",
     "react-navigation": "^3.1.4"
   },
   "devDependencies": {
