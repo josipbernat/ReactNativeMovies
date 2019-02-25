@@ -1,9 +1,9 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
-import { AnimatedCircularProgress } from "react-native-circular-progress";
-import CardSeparator from "./CardSeparator";
-import { defaultBackground, defaultPadding } from "./DetailStyling";
-import Icon from "react-native-vector-icons/AntDesign";
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import CardSeparator from './CardSeparator';
+import { defaultBackground, defaultPadding } from './DetailStyling';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const ratingView = props => {
   return (
@@ -16,7 +16,7 @@ const ratingView = props => {
             rotation={0}
             fill={props.item.vote_average * 10}
             tintColor="#30CE7D"
-            onAnimationComplete={() => console.log("onAnimationComplete")}
+            onAnimationComplete={() => console.log('onAnimationComplete')}
             backgroundColor="#3d5875"
           >
             {fill => (
@@ -26,9 +26,14 @@ const ratingView = props => {
           <Text style={[styles.itemText, { marginTop: 8 }]}>User Score</Text>
         </View>
         <View style={styles.item}>
-          <TouchableHighlight onPress={props.onFavoritePress}>
-            <Icon name="hearto" color="" size={65} color="#21D066" />
-          </TouchableHighlight>
+          <TouchableOpacity onPress={props.onFavoritePress}>
+            <Icon
+              name={props.isFavorite === true ? 'heart' : 'hearto'}
+              color=""
+              size={65}
+              color="#21D066"
+            />
+          </TouchableOpacity>
           <Text style={[styles.itemText, { marginTop: -3 }]}>
             Add to favorites
           </Text>
@@ -41,26 +46,26 @@ const ratingView = props => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: '100%',
     backgroundColor: defaultBackground,
-    alignItems: "center"
+    alignItems: 'center'
   },
   itemsContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    width: "70%",
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '70%',
     backgroundColor: defaultBackground,
-    justifyContent: "space-between"
+    justifyContent: 'space-between'
   },
   item: {
-    alignItems: "center",
+    alignItems: 'center',
     backgroundColor: defaultBackground,
     margin: defaultPadding
   },
   itemText: {
     fontSize: 14,
-    color: "#515151",
-    textAlign: "center"
+    color: '#515151',
+    textAlign: 'center'
   }
 });
 
