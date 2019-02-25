@@ -31,7 +31,6 @@ export class HomeScreen extends React.Component {
       '&include_adult=false&include_video=true&page=' +
       page;
     path += attributes;
-    console.log(attributes);
 
     return fetch(path)
       .then(response => response.json())

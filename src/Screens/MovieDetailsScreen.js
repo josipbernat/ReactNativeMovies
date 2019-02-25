@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import {
   StyleSheet,
   View,
   ImageBackground,
   Image,
   ScrollView
-} from "react-native";
-import * as Constants from "../Constants/Constants";
-import LoadingView from "../Views/LoadingView";
-import DetailView from "../Views/DetailView";
+} from 'react-native';
+import * as Constants from '../Constants/Constants';
+import LoadingView from '../Views/LoadingView';
+import { DetailView } from '../Views/DetailView';
 
 export class MovieDetailsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -35,11 +35,11 @@ export class MovieDetailsScreen extends React.Component {
       isLoadingData: true
     });
 
-    const item = this.props.navigation.getParam("item", "NO-ITEM");
+    const item = this.props.navigation.getParam('item', 'NO-ITEM');
     let urls = [
-      Constants.API_PATH("movie/" + item.id),
-      Constants.API_PATH("movie/" + item.id + "/credits"),
-      Constants.API_PATH("movie/" + item.id + "/videos")
+      Constants.API_PATH('movie/' + item.id),
+      Constants.API_PATH('movie/' + item.id + '/credits'),
+      Constants.API_PATH('movie/' + item.id + '/videos')
     ];
 
     let promises = urls.map(url => {
@@ -77,7 +77,7 @@ export class MovieDetailsScreen extends React.Component {
 
   // https://reactjs.org/docs/conditional-rendering.html
   render() {
-    const item = this.props.navigation.getParam("item", "NO-ITEM");
+    const item = this.props.navigation.getParam('item', 'NO-ITEM');
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -110,19 +110,19 @@ export class MovieDetailsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "stretch",
-    backgroundColor: "white"
+    alignItems: 'stretch',
+    backgroundColor: 'white'
   },
   backdrop: {
     height: 200,
-    width: "100%",
-    justifyContent: "flex-end"
+    width: '100%',
+    justifyContent: 'flex-end'
   },
   poster: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
     height: 120,
     width: 120 / 1.5,
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
     marginLeft: 16,
     marginBottom: -20
   }
