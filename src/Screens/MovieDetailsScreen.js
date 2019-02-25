@@ -9,6 +9,7 @@ import {
 import * as Constants from '../Constants/Constants';
 import LoadingView from '../Views/LoadingView';
 import { DetailView } from '../Views/DetailView';
+import { defaultBackground } from '../Views/DetailViews/DetailStyling';
 
 export class MovieDetailsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch',
-    backgroundColor: 'white'
+    backgroundColor: defaultBackground
   },
   backdrop: {
     height: 200,

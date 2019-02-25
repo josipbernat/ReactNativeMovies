@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-  FlatList,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  Platform
-} from 'react-native';
+import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
 import MovieRow from '../FlatListRows/MovieRow';
 import { defaultBackground } from './DetailViews/DetailStyling';
 import LoadMoreRow from '../FlatListRows/LoadMoreRow';
